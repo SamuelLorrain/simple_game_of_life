@@ -7,6 +7,8 @@ const pauseBtn = document.querySelector(".pause");
 pauseBtn.onclick = stop;
 const checkerBoardBtn = document.querySelector(".checker");
 checkerBoardBtn.onclick = checkerBoard;
+const resetBoardBtn = document.querySelector(".reset");
+resetBoardBtn.onclick = resetBoard;
 const ctx = canvas.getContext("2d");
 const xElements = 32;
 const yElements = 32;
@@ -21,9 +23,10 @@ let newMap = new Uint8Array(xElements*yElements);
 let intervalHandler = undefined;
 
 function start() {
-    if(!intervalHandler) {
-        intervalHandler = setInterval(updateCells, 500);
+    if (intervalHandler) {
+        clearInterval(intervalHandler);
     }
+    intervalHandler = setInterval(updateCells, 500);
 }
 function stop() {
     clearInterval(intervalHandler);
@@ -36,6 +39,11 @@ function checkerBoard() {
             }
         }
     }
+    draw();
+}
+
+function resetBoard() {
+    map = map.fill(0, 0);
     draw();
 }
 
