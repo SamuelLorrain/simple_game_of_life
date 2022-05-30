@@ -13,3 +13,14 @@ body {
 canvas {
     border:1px solid black;
 }
+
+.control {
+    position: absolute;
+    top: 5;
+    left: 5;
+    display: flex;
+}
+
+.control * {
+    margin-right: 1rem;
+}
